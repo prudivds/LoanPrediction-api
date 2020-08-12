@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
+import pickle
 
 app = Flask(__name__)
 model = pickle.load(open('DecisionTree.pkl', 'rb'))
@@ -19,6 +20,7 @@ Onehot_dict = pickle.load(Onehotpickle_in)
 Labelencoderpickle_in = open("labelencoder_pickle.pkl","rb")
 Labelencoder_dict = pickle.load(Labelencoderpickle_in)
 
+Labelencoder_dict
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -54,6 +56,7 @@ def predict():
     df=pd.concat([df,d1,d2,d3],axis=1)
     
     df=df.drop(['Self_Employed','Married','Gender'],axis=1)
+    
     prediction = model.predict(df)
 
     output = round(prediction[0], 2)
@@ -63,7 +66,7 @@ def predict():
     else:
         output='Loan Rejected'
 
-    return render_template('index.html', prediction_text='LOAN STATUS (Yes/NO)  {}'.format(output))
+    return render_template('index.html', prediction_text='LOAN STATUS (Yes/NO)  :{}'.format(output))
 
 
 if __name__ == "__main__":
