@@ -48,7 +48,7 @@ def predict():
     df['Dependents']=pd.DataFrame(Labelencoder_dict['Dependents'].transform(df[['Dependents']]))
     df['Education']=pd.DataFrame(Labelencoder_dict['Education'].transform(df[['Education']]))
     df['Property_Area']=pd.DataFrame(Labelencoder_dict['Property_Area'].transform(df[['Property_Area']]))
-    df['Credit_History']=pd.DataFrame(Labelencoder_dict['Credit_History'].transform(df[['Credit_History']]))
+    #df['Credit_History']=pd.DataFrame(Labelencoder_dict['Credit_History'].transform(df[['Credit_History']]))
     
     df['LoanAmount']=pd.DataFrame(standardscaler_dict['LoanAmount'].transform(df[['LoanAmount']]))
     df['ApplicantIncome']=pd.DataFrame(MinmaxScaler_dict['ApplicantIncome'].transform(df[['ApplicantIncome']]))
